@@ -57,7 +57,13 @@ FROM work_schedules
 WHERE department_code <> -999999
 LIMIT 1;
 
-
+SELECT 
+    ws.department_code AS "Код отдела в расписании",
+    ws.post_office_code,
+    d.name AS "Название отдела"
+FROM work_schedules ws
+LEFT JOIN departments d ON ws.department_code = d.department_code
+WHERE ws.department_code = -999999
 -- 4. ЛЕВОСТОРОННЕЕ СОЕДИНЕНИЕ LEFT JOIN--
 
 SELECT
